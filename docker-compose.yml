@@ -1,0 +1,55 @@
+version: "3"
+services:
+  composer:
+    image: composer:latest
+    environment:
+      - COMPOSER_CACHE_DIR=/app/.cache/composer
+    volumes:
+      - .:/app
+    restart: "no"
+
+  php:
+    image: php:7.4-cli
+    volumes:
+      - .:/app
+    working_dir: /app
+    restart: "no"
+  phpunit:
+    image: php:7.4-cli
+    volumes:
+      - .:/app
+    working_dir: /app
+    entrypoint: vendor/bin/phpunit
+    restart: "no"
+  altenhtml:
+    build: .
+    container_name: html_alten
+    ports:
+      - "8089:80"
+    volumes:
+      - C:\Users\viet\Downloads\Auth\Auth:/var/www/html/
+  altenpgsql:
+    image: postgres:13
+    container_name: pgsql_alten
+    ports:
+      - "5432:5432"
+    volumes:
+      - C:\Users\viet\Downloads\Auth\pgdata:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_PASSWORD=12345678
+      - PGDATA=/var/lib/postgresql/data/
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin4
+    ports:
+      - "8082:80"
+    volumes:
+      - pgadmin4:/var/lib/pgadmin
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=moufarreh@hotmail.com
+      - PGADMIN_DEFAULT_PASSWORD=12345678
+
+volumes:
+  pgadmin4:
+    external: true

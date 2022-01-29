@@ -1,0 +1,1 @@
+{"version":1,"defects":{"AuthTest::testLogin":4,"AuthTest::testLoginBadUserName":4,"AuthTest::testLoginGoodUserName":3,"AuthTest::testLoginGoodUserNamePassword":3},"times":{"AuthTest::testLogin":0.752,"AuthTest::testLoginBadUserName":0.146,"AuthTest::testLoginGoodUserName":0.025,"AuthTest::testLoginBadPassword":0,"AuthTest::testLoginGoodUserNamePassword":0.016}}
